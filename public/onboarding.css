@@ -1,1 +1,155 @@
+/* ── Token overrides for this page ── */
+:root {
+  --color-black:      #211e1e;
+  --spacing-sm:       8px;
+  --spacing-l:        32px;
+  --spacing-xl:       40px;
 
+  /* Figma spec: active dot uses light blue, inactive is grey at 40% opacity */
+  --dot-color-active: #bfdbff;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Work Sans', sans-serif;
+}
+
+/* ── Phone shell ── */
+.phone {
+  background: var(--color-black);
+  width: 390px;
+  min-height: 844px;
+  border-radius: 40px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+}
+
+/* ── Status bar ── */
+.status-bar {
+  height: 56px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing-l);
+}
+
+.status-bar__time {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+.status-bar__icons {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.status-bar__signal  { width: 23.5px; height: 14px; }
+.status-bar__wifi    { width: 17px;   height: 13px; }
+.status-bar__battery { width: 23.5px; height: 11px; }
+
+/* ── Navigation bar ── */
+.nav-bar {
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-bar__title {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.4px;
+  color: var(--color-white);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 201px;
+}
+
+/* ── Carousel section ── */
+.carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 46px;
+  padding: var(--spacing-s);
+  flex-shrink: 0;
+}
+
+.carousel__image {
+  width: 100%;
+  height: 313px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.carousel__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-s);
+  width: 100%;
+  text-align: center;
+  color: var(--color-white);
+}
+
+.carousel__heading {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: -0.64px;
+  line-height: 1;
+}
+
+.carousel__subtext {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+/* inactive dots at 40% opacity per Figma spec */
+.page-indicator__dot:not(.page-indicator__dot--active) {
+  opacity: 0.4;
+}
+
+/* ── Bottom button bar ── */
+.bottom-bar {
+  height: 103px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  padding: var(--spacing-s);
+}
+
+.bottom-bar .btn {
+  width: 100%;
+}
