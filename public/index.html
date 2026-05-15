@@ -4,294 +4,60 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Onboarding</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
 
-    body {
-      background: var(--black-100);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      font-family: 'Work Sans', sans-serif;
-    }
-
-    /* --- Design tokens --- */
-    :root {
-      --black: #211e1e;
-      --white: #ffffff;
-      --blue-100: #286de4;
-      --blue-60: #bfdbff;
-      --grey: #bcbcbc;
-      --spacing-xs: 8px;
-      --spacing-s: 16px;
-      --spacing-m: 24px;
-    }
-
-    /* --- Phone shell --- */
-    .phone {
-      background: var(--black);
-      width: 390px;
-      min-height: 844px;
-      border-radius: 40px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.6);
-    }
-
-    /* --- Status bar --- */
-    .status-bar {
-      height: 56px;
-      position: relative;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-
-    .status-bar__time {
-      position: absolute;
-      left: 32px;
-      top: 17px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 17px;
-      color: var(--white);
-      white-space: nowrap;
-    }
-
-    .status-bar__icons {
-      position: absolute;
-      right: 32px;
-      top: 20px;
-      width: 78.5px;
-      height: 14.5px;
-    }
-
-    .status-bar__icons img {
-      position: absolute;
-      display: block;
-    }
-
-    .status-bar__battery {
-      width: 23.5px;
-      height: 11px;
-      right: 0;
-      top: 3px;
-    }
-
-    .status-bar__wifi {
-      width: 17px;
-      height: 13px;
-      left: 31.5px;
-      bottom: 0.5px;
-    }
-
-    .status-bar__signal {
-      width: 23.5px;
-      height: 14px;
-      left: 0;
-      top: 0;
-    }
-
-    /* --- Navigation bar --- */
-    .nav-bar {
-      height: 48px;
-      position: relative;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-
-    .nav-bar__title {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      top: 13.5px;
-      font-family: 'Work Sans', sans-serif;
-      font-weight: 700;
-      font-size: 20px;
-      color: var(--white);
-      letter-spacing: -0.4px;
-      white-space: nowrap;
-      text-align: center;
-      width: 201px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    /* --- Carousel section --- */
-    .carousel {
-      display: flex;
-      flex-direction: column;
-      gap: 46px;
-      align-items: center;
-      padding: var(--spacing-s);
-      flex-shrink: 0;
-    }
-
-    .carousel__image {
-      width: 100%;
-      height: 313px;
-      border-radius: 8px;
-      overflow: hidden;
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .carousel__image img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      pointer-events: none;
-      border-radius: 8px;
-    }
-
-    .carousel__text {
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-s);
-      width: 100%;
-      color: var(--white);
-      text-align: center;
-    }
-
-    .carousel__heading {
-      font-family: 'Work Sans', sans-serif;
-      font-weight: 700;
-      font-size: 32px;
-      letter-spacing: -0.64px;
-      line-height: 1;
-      width: 100%;
-    }
-
-    .carousel__subtext {
-      font-family: 'Work Sans', sans-serif;
-      font-weight: 400;
-      font-size: 18px;
-      line-height: 1.25;
-      width: 100%;
-    }
-
-    /* --- Page indicators --- */
-    .page-indicator {
-      display: flex;
-      gap: var(--spacing-xs);
-      align-items: center;
-    }
-
-    .page-indicator__dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 360px;
-      flex-shrink: 0;
-    }
-
-    .page-indicator__dot--active {
-      background: var(--blue-60);
-    }
-
-    .page-indicator__dot--inactive {
-      background: var(--grey);
-      opacity: 0.4;
-    }
-
-    /* --- Bottom button bar --- */
-    .button-bar {
-      padding: var(--spacing-s);
-      height: 103px;
-      display: flex;
-      align-items: flex-start;
-      flex-shrink: 0;
-    }
-
-    .btn-primary {
-      background: var(--blue-100);
-      border: none;
-      border-radius: 40px;
-      width: 100%;
-      padding: var(--spacing-s) var(--spacing-m);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: opacity 0.15s ease;
-    }
-
-    .btn-primary:hover {
-      opacity: 0.9;
-    }
-
-    .btn-primary:active {
-      opacity: 0.75;
-    }
-
-    .btn-primary__label {
-      font-family: 'Work Sans', sans-serif;
-      font-weight: 600;
-      font-size: 16px;
-      color: var(--white);
-      letter-spacing: -0.32px;
-      white-space: nowrap;
-    }
-  </style>
+  <link rel="stylesheet" href="onboarding.css" />
 </head>
 <body>
-  <div class="phone">
-    <!-- Status Bar -->
-    <div class="status-bar">
-      <span class="status-bar__time">10:00 AM</span>
-      <div class="status-bar__icons">
-        <img class="status-bar__battery"
-             src="https://www.figma.com/api/mcp/asset/3a8a743b-d710-4505-a0ac-286673c09e33"
-             alt="" />
-        <img class="status-bar__wifi"
-             src="https://www.figma.com/api/mcp/asset/bd3e3e91-3101-4a2e-8019-857d5ee82f77"
-             alt="" />
-        <img class="status-bar__signal"
-             src="https://www.figma.com/api/mcp/asset/9cbb0e4c-e737-4144-a209-a44c4f959b59"
-             alt="" />
-      </div>
-    </div>
 
-    <!-- Navigation Bar -->
-    <div class="nav-bar">
-      <span class="nav-bar__title">Welcome</span>
-    </div>
+<div class="phone">
 
-    <!-- Carousel -->
-    <div class="carousel">
-      <div class="carousel__image">
-        <img src="https://www.figma.com/api/mcp/asset/ba0eaa2f-cbf7-495d-9db5-1a0598642131"
-             alt="Illustration of a character starting a journey" />
-      </div>
-
-      <div class="carousel__text">
-        <h2 class="carousel__heading">Discover new features</h2>
-        <p class="carousel__subtext">Learn how to make the most of our app with these quick tips.</p>
-      </div>
-
-      <div class="page-indicator" role="tablist" aria-label="Onboarding step 1 of 3">
-        <div class="page-indicator__dot page-indicator__dot--active" role="tab" aria-selected="true" aria-label="Step 1"></div>
-        <div class="page-indicator__dot page-indicator__dot--inactive" role="tab" aria-selected="false" aria-label="Step 2"></div>
-        <div class="page-indicator__dot page-indicator__dot--inactive" role="tab" aria-selected="false" aria-label="Step 3"></div>
-      </div>
-    </div>
-
-    <!-- Bottom Button -->
-    <div class="button-bar">
-      <button class="btn-primary" type="button">
-        <span class="btn-primary__label">SKIP</span>
-      </button>
+  <!-- Status Bar -->
+  <div class="status-bar">
+    <span class="status-bar__time">10:00 AM</span>
+    <div class="status-bar__icons">
+      <img class="status-bar__signal"
+           src="https://www.figma.com/api/mcp/asset/9cbb0e4c-e737-4144-a209-a44c4f959b59"
+           alt="Signal" />
+      <img class="status-bar__wifi"
+           src="https://www.figma.com/api/mcp/asset/bd3e3e91-3101-4a2e-8019-857d5ee82f77"
+           alt="Wi-Fi" />
+      <img class="status-bar__battery"
+           src="https://www.figma.com/api/mcp/asset/3a8a743b-d710-4505-a0ac-286673c09e33"
+           alt="Battery" />
     </div>
   </div>
+
+  <!-- Navigation Bar -->
+  <div class="nav-bar">
+    <span class="nav-bar__title">Welcome</span>
+  </div>
+
+  <!-- Carousel -->
+  <div class="carousel">
+    <div class="carousel__image">
+      <img src="https://www.figma.com/api/mcp/asset/ba0eaa2f-cbf7-495d-9db5-1a0598642131"
+           alt="Illustration of a character starting a journey" />
+    </div>
+
+    <div class="carousel__text">
+      <h2 class="carousel__heading">Discover new features</h2>
+      <p class="carousel__subtext">Learn how to make the most of our app with these quick tips.</p>
+    </div>
+
+    <!-- PINX page-indicator component -->
+    <div class="page-indicator" role="tablist" aria-label="Onboarding step 1 of 3">
+      <div class="page-indicator__dot page-indicator__dot--active" role="tab" aria-selected="true"  aria-label="Step 1"></div>
+      <div class="page-indicator__dot"                             role="tab" aria-selected="false" aria-label="Step 2"></div>
+      <div class="page-indicator__dot"                             role="tab" aria-selected="false" aria-label="Step 3"></div>
+    </div>
+  </div>
+
+  <!-- Bottom bar — PINX .btn component -->
+  <div class="bottom-bar">
+    <button class="btn" type="button">SKIP</button>
+  </div>
+
+</div>
+
 </body>
 </html>
